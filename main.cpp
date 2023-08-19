@@ -9,7 +9,7 @@
 using namespace std;
 
 //Size of the lattice
-const int N=256;
+const int N=128;
 
 //Taking Planck unit system, set Boltzmann constant
 const float k_B=1;
