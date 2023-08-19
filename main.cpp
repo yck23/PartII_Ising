@@ -9,7 +9,7 @@
 using namespace std;
 
 //Size of the lattice
-const int N=256;
+const int N=16;
 
 //Taking Planck unit system, set Boltzmann constant
 const float k_B=1;
@@ -331,32 +331,39 @@ void Task6(){
 
 //Basic function for timing the timesteps in lattice under certain conditions
 void speedTest(){
-	// Use auto keyword to avoid typing long
-	// type definitions to get the timepoint
-	// at this instant use function now()
-	auto start = chrono::high_resolution_clock::now();
+	float totTime=0;
+	int numLoops=20;
+	for(int i=0;i<numLoops;i++){
+		// Use auto keyword to avoid typing long
+		// type definitions to get the timepoint
+		// at this instant use function now()
+		auto start = chrono::high_resolution_clock::now();
 
-	Lattice testLat;
-	testLat.tf=3;
-	testLat.muH=0;
-	initUps(testLat);
-	for(int i=0;i<1000;i++){
-		timestep(testLat);
+		Lattice testLat;
+		testLat.tf=3;
+		testLat.muH=0;
+		initUps(testLat);
+		for(int i=0;i<80000;i++){
+			timestep(testLat);
+		}
+
+		// After function call
+		auto stop = chrono::high_resolution_clock::now();
+
+		// Subtract stop and start timepoints and
+		// cast it to required unit. Predefined units
+		// are nanoseconds, microseconds, milliseconds,
+		// seconds, minutes, hours. Use duration_cast()
+		// function.
+		auto duration = chrono::duration_cast<chrono::microseconds>(stop - start);
+		
+		// To get the value of duration use the count()
+		// member function on the duration object
+		float looptime=float(duration.count())/1000000;
+		cout <<"Loop "<<i+1<<" executed in "<< looptime << " s"<<endl;
+		totTime+=looptime;
 	}
-
-	// After function call
-	auto stop = chrono::high_resolution_clock::now();
-
-	// Subtract stop and start timepoints and
-	// cast it to required unit. Predefined units
-	// are nanoseconds, microseconds, milliseconds,
-	// seconds, minutes, hours. Use duration_cast()
-	// function.
-	auto duration = chrono::duration_cast<chrono::milliseconds>(stop - start);
-	
-	// To get the value of duration use the count()
-	// member function on the duration object
-	cout <<"Function executed in "<< float(duration.count())/1000 << " s"<<endl;
+	cout<<numLoops<<" loops executed with an average time of "<<totTime/numLoops<<" s";
 }
 
 //susceptibility calculations from magnetisation fluctuations
