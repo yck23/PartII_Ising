@@ -332,7 +332,7 @@ void Task6(){
 //Basic function for timing the timesteps in lattice under certain conditions
 void speedTest(){
 	float totTime=0;
-	int numLoops=20;
+	int numLoops=50000;
 	for(int i=0;i<numLoops;i++){
 		// Use auto keyword to avoid typing long
 		// type definitions to get the timepoint
