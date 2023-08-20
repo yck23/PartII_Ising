@@ -359,7 +359,7 @@ void speedTest(){
 		
 		// To get the value of duration use the count()
 		// member function on the duration object
-		float looptime=float(duration.count())/1000000;
+		float looptime=static_cast<float>(duration.count())/1000000;
 		cout <<"Loop "<<i+1<<" executed in "<< looptime << " s"<<endl;
 		totTime+=looptime;
 	}
