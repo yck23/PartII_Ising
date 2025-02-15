@@ -4,7 +4,7 @@ This project implements a Monte Carlo simulation of the Ising Model on a 2D squa
 
 ## Features
 
-* Simulates a 16×16 spin lattice with periodic boundary conditions.
+* Simulates a general N×N spin lattice with periodic boundary conditions.
 * Uses the Planck unit system where the Boltzmann constant ($k_B$) is set to 1.
 * Implements the Metropolis algorithm to determine spin flips.
 * Provides multiple experimental tasks, including:
