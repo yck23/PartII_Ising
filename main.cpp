@@ -121,9 +121,8 @@ void timestep(Lattice (&lattice)){
 
 ////////////////////////////////////////////////////////////////////
 /*Everything before this point describes the core functions to run the simulations.
-These could in fact be placed under a separate header file,
-and exported for future projects.
-The functions after this point test certain tasks under specific experimental conditions.
+
+The functions after this point test tasks under specific experimental conditions.
 */
 ////////////////////////////////////////////////////////////////////
 
